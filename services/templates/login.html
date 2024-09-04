@@ -1,0 +1,28 @@
+<html>
+<head>
+    <title>Login</title>
+</head>
+<body>
+    <h2>Login</h2>
+
+    <form method="POST">
+        {% csrf_token %}  <!-- Protects the form against CSRF attacks -->
+
+        <!-- Username input field -->
+        <label for="username">Username:</label>
+        <input type="text" name="username" id="username" required>
+
+        <!-- Password input field -->
+        <label for="password">Password:</label>
+        <input type="password" name="password" id="password" required>
+
+        <!-- Submit button -->
+        <button type="submit">Login</button>
+    </form>
+
+    <!-- Error message if login fails -->
+    {% if error %}
+        <p style="color:red">{{ error }}</p>
+    {% endif %}
+</body>
+</html>

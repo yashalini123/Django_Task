@@ -1,0 +1,13 @@
+<html>
+<body>
+    <h2>{{ service.service_name }}</h2>
+    <p>Payment Terms: {{ service.payment_terms }}</p>
+    <p>Price: {{ service.service_price }}</p>
+    <p>Package: {{ service.service_package }}</p>
+    <p>Tax: {{ service.service_tax }}</p>
+    <img src="{{ service.service_image.url }}" alt="{{ service.service_name }}">
+    <a href="{% url 'update_service' service.pk %}">Edit</a>
+    <a href="{% url 'delete_service' service.pk %}">Delete</a>
+    <a href="{% url 'service_list' %}">Back to List</a>
+</body>
+</html>

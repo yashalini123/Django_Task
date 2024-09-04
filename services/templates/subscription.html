@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Subscription</title>
+</head>
+<body>
+    <h1>Subscribe to {{ service.service_name }}</h1>
+    <p>Price (without tax): {{ service.service_price }} <p>
+    <p>Total Price (with tax): {{ total_price }}</p>
+
+    <form method="POST">
+        {% csrf_token %}
+        <label for="address">Enter your address:</label><br>
+        <textarea id="address" name="address" rows="4" cols="50" required></textarea><br><br>
+        <button type="submit">Subscribe</button>
+    </form>
+</body>
+</html>

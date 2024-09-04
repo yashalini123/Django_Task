@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Home - IT Services</title>
+</head>
+<body>
+    <h1>Available Services</h1>
+    <ul>
+    {% for service in services %}
+        <li>
+            <h2>{{ service.name }}</h2>
+            <p>Name:{{service.service_name}}</p>
+            <p>Price: {{ service.service_price }}</p>
+            <p>Payment Terms: {{ service.payment_terms }}</p>
+            <p>Package: {{ service.service_package }}</p>
+            <p>Tax:{{ service.service_tax }}</p>
+            <p>Image:{{ service.service_image }}</p>
+             <!-- "Buy" button for each service -->
+            <form action="{% url 'subscription' service.id %}" method="get">
+                <button type="submit">Buy</button>
+            </form>
+        </li>
+    {% empty %}
+        <p>No services available at the moment.</p>
+    {% endfor %}
+    </ul>
+</body>
+</html>

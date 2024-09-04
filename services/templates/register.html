@@ -1,0 +1,10 @@
+<html>
+<body>
+    <h2>Register</h2>
+    <form method="POST">
+        {% csrf_token %}  <!-- Protects the form against CSRF attacks -->
+        {{ form.as_p }}  <!-- Renders the form fields -->
+        <button type="submit">Register</button>
+    </form>
+</body>
+</html>

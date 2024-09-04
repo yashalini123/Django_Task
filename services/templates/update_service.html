@@ -1,0 +1,10 @@
+<html>
+<body>
+    <h2>Update Service</h2>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Update Service</button>
+    </form>
+</body>
+</html>

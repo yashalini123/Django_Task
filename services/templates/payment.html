@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Make Payment</title>
+</head>
+<body>
+    <h1>Payment for {{ service.service_name }}</h1>
+    <p>Total Price (with tax): ₹{{ total_price }}</p>
+
+    <form action="{{ callback_url }}" method="POST">
+        <!-- Razorpay Checkout Button -->
+        <script
+            src="https://checkout.razorpay.com/v1/checkout.js"
+            data-key="{{ razorpay_key }}"  <!-- Razorpay API Key from settings.py -->
+            data-amount="{{ total_price|floatformat:2|add:'0' }}" <!-- Total Amount (in paise) -->
+            data-currency="INR"  <!-- Currency: INR -->
+            data-order_id="{{ razorpay_order_id }}"  <!-- Razorpay Order ID created in view -->
+            data-buttontext="Pay Now"  <!-- Button text displayed to the user -->
+            data-name="{{ service.name }}"  <!-- Name of the service -->
+            data-description="Subscription for {{ service.name }}"  <!-- Description for Razorpay payment -->
+            data-image=""  <!-- Optional: You can add a logo image URL here -->
+            data-prefill.name=""  <!-- Optionally, prefill customer name -->
+            data-prefill.email=""  <!-- Optionally, prefill customer email -->
+            data-theme.color="#F37254"  <!-- Color of the Razorpay payment form -->
+        ></script>
+        <!-- Include CSRF token for form security -->
+        <input type="hidden" value="{{ csrf_token }}" name="csrfmiddlewaretoken">
+    </form>
+</body>
+</html>
